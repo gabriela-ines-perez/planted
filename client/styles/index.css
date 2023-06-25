@@ -1,8 +1,64 @@
 body {
-  position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   padding: 20px;
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: whitesmoke;
+  font-family: 'Space Mono', monospace;
+}
+
+header{
+  text-align: center;
+  width: 100%;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+text-align: center;
+height: 50px;
+}
+
+.plant-list-main{
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+  justify-content:space-around;
+}
+
+.plant-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: blueviolet;
+  margin: 20px;
+  border-radius: 20px;
+  color:aliceblue;
+  position: relative;
+}
+
+.delete-button{
+  position: absolute;
+  top: 0;
+  right:0;
+  border-radius: 100%;
+  background-color: bisque;
+}
+
+.add-plant{
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.plant-image{
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }

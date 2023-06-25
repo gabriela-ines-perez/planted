@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import plants from './plants'
+import extplants from './extplants'
 
 export default combineReducers({
-  // stuff
+  plants,
+  extplants,
 })
