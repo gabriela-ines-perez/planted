@@ -2,22 +2,30 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 import { addAPlant } from '../actions/plants'
 import { ChangeEvent, useState, FormEvent, useEffect } from 'react'
 import { fetchExtPlants } from '../actions/extplants'
+import { ExtPlantData } from '../models/extplants'
 
 interface newPlant {
-  extId: number
   name: string
+  extId: number
   species: string
+  common_name?: string
+  id: number
+  scientific_name?: string
+  cycle?: string
+  sunlight?: string
+  watering?: string
+  default_image?: PlantPhoto
+  description?: string
+}
+export interface PlantPhoto {
+  original_url: string
 }
 
 function AddPlant() {
   const dispatch = useAppDispatch()
-  const [newPlant, setNewPlant] = useState({
-    extId: 0,
-    name: '',
-    species: '',
-  } as newPlant)
+  const [newPlant, setNewPlant] = useState([] as newPlant[] | null)
   const [viewForm, setViewForm] = useState(false)
-  const extplants = useAppSelector((state) => state.extplants)
+  const extplants = useAppSelector((state) => state.extplants) as ExtPlantData[]
 
   useEffect(() => {
     dispatch(fetchExtPlants()).catch((err) => {
@@ -31,7 +39,11 @@ function AddPlant() {
       (plant) => plant.common_name === e.target.value
     )
     const extId = selectedPlant ? selectedPlant.id : 0
-    const newState = { ...newPlant, [key]: e.target.value, extId: extId }
+    const newState = {
+      ...newPlant,
+      [key]: e.target.value,
+      extId: extId,
+    } as newPlant
     setNewPlant(newState)
   }
 
@@ -48,6 +60,7 @@ function AddPlant() {
   return (
     <>
       <section className="add-plant">
+        <h2>Get started by adding your plant!</h2>
         <button className="add-button" onClick={handleClick}>
           {viewForm ? '-' : '+'}
         </button>
@@ -60,16 +73,19 @@ function AddPlant() {
               name="name"
               value={newPlant.name}
               onChange={handleChange}
+              required
             />
 
             <label htmlFor="species">Species</label>
-            <select id="species" name="species" onChange={handleChange}>
+            <select
+              id="species"
+              name="species"
+              onChange={handleChange}
+              required
+            >
+              <option>Select a house plant:</option>
               {extplants.map((plant) => (
-                <option
-                  key={plant.id}
-                  value={plant.common_name}
-                  data-image={plant.image}
-                >
+                <option key={plant.id} value={plant.common_name}>
                   {plant.common_name}
                 </option>
               ))}

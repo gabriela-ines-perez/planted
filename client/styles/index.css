@@ -54,6 +54,7 @@ footer{
   /* width:100%; */
   justify-content:space-around;
   margin: 50px;
+  text-align: center;
 }
 
 .plant-card{

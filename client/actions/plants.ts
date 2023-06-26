@@ -6,15 +6,30 @@ export type Plant = {
   name: string
   species: string
   image: string
-  extId: number
+  extID: number
 }
-export type newPlant = { name: string; species: string }
+interface newPlant {
+  extId: number
+  name: string
+  species: string
+  common_name: string
+  id: number
+  scientific_name: string
+  cycle: string
+  sunlight: string
+  watering: string
+  default_image: PlantPhoto
+  description: string
+}
+export interface PlantPhoto {
+  original_url: string
+}
 
 export type PlantAction =
   | { type: 'RECIEVE_PLANT'; payload: Plant[] }
   | { type: 'REQUEST_PLANTS'; payload: null }
   | { type: 'SHOW_ERROR'; payload: string }
-  | { type: 'ADD_PLANT'; payload: Plant }
+  | { type: 'ADD_PLANT'; payload: newPlant }
   | { type: 'DELETE_PLANT'; payload: number }
   | { type: 'UPDATE_PLANT'; payload: Plant[] }
   | { type: 'FETCH_A_PLANT'; payload: Plant }
@@ -31,7 +46,7 @@ export function showErr(errorMessage: string): PlantAction {
   return { type: 'SHOW_ERROR', payload: errorMessage }
 }
 
-export function createPlant(plant: Plant): PlantAction {
+export function createPlant(plant: newPlant): PlantAction {
   return { type: 'ADD_PLANT', payload: plant }
 }
 
@@ -69,13 +84,11 @@ export function deletePlant(id: number): ThunkAction {
   }
 }
 
-export function addAPlant(plant: Plant): ThunkAction {
+export function addAPlant(plant: newPlant): ThunkAction {
   return (dispatch) => {
     return addPlant(plant)
       .then((newPlant) => {
-        // Include the ID from the response in the payload
-        const plantWithId = { ...plant, id: newPlant.id }
-        dispatch(createPlant(plantWithId))
+        dispatch(createPlant(newPlant))
       })
       .catch((err) => {
         dispatch(showErr(err.message))

@@ -6,6 +6,12 @@ export interface ExtPlantData {
   cycle: string
   sunlight: string
   watering: string
+  default_image: PlantPhoto
+  description: string
+}
+
+export interface PlantPhoto {
+  original_url: string
 }
 
 export type ExtPlant = {

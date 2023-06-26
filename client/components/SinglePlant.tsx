@@ -19,16 +19,18 @@ export default function SinglePlant() {
   console.log(extImage)
 
   useEffect(() => {
-    dispatch(fetchAnExtPlants(extID)).catch((err) => {
+    const extIdNum = Number(extID)
+    dispatch(fetchAnExtPlants(extIdNum)).catch((err) => {
       console.error(err.message)
     })
-  }, [dispatch])
+  }, [dispatch, extID])
 
   useEffect(() => {
-    dispatch(fetchAPlant(id)).catch((err) => {
+    const idNum = Number(id)
+    dispatch(fetchAPlant(idNum)).catch((err) => {
       console.error(err.message)
     })
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <>

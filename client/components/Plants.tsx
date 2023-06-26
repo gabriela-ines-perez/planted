@@ -18,6 +18,7 @@ function Plants() {
 
   return (
     <>
+     
       <AddPlant />
       <section className="plant-list-main">
         {plants &&

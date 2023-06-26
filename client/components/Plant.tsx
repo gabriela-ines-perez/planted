@@ -19,13 +19,13 @@ export function Plant(props: Props) {
           <img
             className="plant-image"
             src={`./images/${props.image}`}
-            alt={props.species}
+            alt={`a potted ${props.species}`}
           />
         ) : (
           <img
             className="plant-image"
             src={`./images/default.png`}
-            alt={props.species}
+            alt={`monserta icson for empty state`}
           />
         )}
         <button className="delete-button" onClick={handleClick}>
