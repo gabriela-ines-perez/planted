@@ -21,23 +21,9 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  console.log('routes', id)
   await db.delaPlant(id)
   res.sendStatus(204)
 })
 
-// router.patch('/:id', async (req, res) => {
-//   const id = Number(req.params.id)
-//   const data = req.body
-//   const post = await db.updatePost(id, data)
-//   res.json(post)
-// })
-
-// router.post('/:postId/comments', async (req, res) => {
-//   const postId = Number(req.params.postId)
-//   const data = req.body
-//   const newComment = await db.createComment(postId, data)
-//   res.json(newComment)
-// })
 
 export default router

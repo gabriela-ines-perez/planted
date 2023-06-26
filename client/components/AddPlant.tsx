@@ -3,27 +3,11 @@ import { addAPlant } from '../actions/plants'
 import { ChangeEvent, useState, FormEvent, useEffect } from 'react'
 import { fetchExtPlants } from '../actions/extplants'
 import { ExtPlantData } from '../models/extplants'
-
-interface newPlant {
-  name: string
-  extId: number
-  species: string
-  common_name?: string
-  id: number
-  scientific_name?: string
-  cycle?: string
-  sunlight?: string
-  watering?: string
-  default_image?: PlantPhoto
-  description?: string
-}
-export interface PlantPhoto {
-  original_url: string
-}
+import { NewPlant } from '../models/plants'
 
 function AddPlant() {
   const dispatch = useAppDispatch()
-  const [newPlant, setNewPlant] = useState([] as newPlant[] | null)
+  const [newPlant, setNewPlant] = useState([] as NewPlant[] | null)
   const [viewForm, setViewForm] = useState(false)
   const extplants = useAppSelector((state) => state.extplants) as ExtPlantData[]
 
@@ -83,7 +67,8 @@ function AddPlant() {
               onChange={handleChange}
               required
             >
-              <option>Select a house plant:</option>
+              <option disabled>Select a house plant:</option>
+              <option>---</option>
               {extplants.map((plant) => (
                 <option key={plant.id} value={plant.common_name}>
                   {plant.common_name}

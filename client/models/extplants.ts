@@ -19,3 +19,9 @@ export type ExtPlant = {
   common_name: string
   image: string
 }
+
+export type ExtPlantAction =
+  | { type: 'RECIEVE_EXTPLANT'; payload: ExtPlant[] }
+  | { type: 'REQUEST_EXTPLANTS'; payload: null }
+  | { type: 'SHOW_ERROR'; payload: string }
+  | { type: 'RECIEVE_A_EXTPLANT'; payload: ExtPlantData }

@@ -1,18 +1,14 @@
-import { ExtPlantAction } from '../actions/extplants'
-import { ExtPlant, ExtPlantData } from '../models/extplants'
+import { ExtPlant, ExtPlantAction } from '../models/extplants'
 
 const initialState: ExtPlant[] = []
 
-function extPlantReducer(
-  state = initialState,
-  action: ExtPlantAction
-): ExtPlant[] | ExtPlantData {
+function extPlantReducer(state = initialState, action: ExtPlantAction) {
   const { type, payload } = action
 
   switch (type) {
     case 'RECIEVE_EXTPLANT':
       return payload
-    case 'GET-A-PLANT':
+    case 'RECIEVE_A_EXTPLANT':
       return payload
 
     default:

@@ -9,7 +9,6 @@ export function Plant(props: Props) {
 
   const handleClick = () => {
     dispatch(deletePlant(id))
-    console.log('handleclick', id)
   }
 
   return (

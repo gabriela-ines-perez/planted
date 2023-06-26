@@ -14,11 +14,8 @@ function Plants() {
     })
   }, [dispatch])
 
-  console.log(plants)
-
   return (
     <>
-     
       <AddPlant />
       <section className="plant-list-main">
         {plants &&

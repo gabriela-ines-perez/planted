@@ -17,6 +17,5 @@ export async function addPlant(data: Plant) {
 }
 
 export async function delaPlant(id: number) {
-  console.log('db func', id)
   return await db('plants').where({ id }).del()
 }

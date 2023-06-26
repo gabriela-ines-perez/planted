@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import { fetchAnExtPlants } from '../actions/extplants'
 import { useParams } from 'react-router-dom'
 import { fetchAPlant } from '../actions/plants'
-// import { Plant } from '../models/plants'
 
 export default function SinglePlant() {
   const extplant = useAppSelector((state) => state.extplants) as ExtPlantData
@@ -15,8 +14,6 @@ export default function SinglePlant() {
   const extImage = extplant.default_image
     ? extplant.default_image.original_url
     : '../../public/images/default.png'
-
-  console.log(extImage)
 
   useEffect(() => {
     const extIdNum = Number(extID)
@@ -48,17 +45,16 @@ export default function SinglePlant() {
             alt="plant"
           />
         )}
-        <h3>{plant.name}</h3>
+        <h2>{plant.name}</h2>
         {extImage && <img src={extImage} alt={plant.name} />}
-
-        <p>
+        <h3>
           {' '}
           <em>
             {extplant.common_name
               ? extplant.common_name
               : 'No data on this plant'}
           </em>
-        </p>
+        </h3>
         <p>
           Watering:
           {extplant.watering ? extplant.watering : 'No data on this plant'}
