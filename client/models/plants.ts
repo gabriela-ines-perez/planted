@@ -1,6 +1,6 @@
 export interface Plant {
   id?: number
-  extId: number
+  extID: number
   name: string
   species: string
   image: string

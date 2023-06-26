@@ -4,6 +4,10 @@ export function getPlants() {
   return request.get('/api/v1/plants').then((res) => res.body)
 }
 
+export function plantByID(id: number) {
+  return request.get(`/api/v1/plants/${id}`).then((res) => res.body)
+}
+
 export function addPlant(plant) {
   return request
     .post('/api/v1/plants')

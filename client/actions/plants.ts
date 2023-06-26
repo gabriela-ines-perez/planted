@@ -1,7 +1,13 @@
-import { getPlants, addPlant, delAPlant } from '../apis/plants'
+import { getPlants, addPlant, delAPlant, plantByID } from '../apis/plants'
 import type { ThunkAction } from '../store'
 
-export type Plant = { id: number; name: string; species: string; image: string; extId: number }
+export type Plant = {
+  id: number
+  name: string
+  species: string
+  image: string
+  extId: number
+}
 export type newPlant = { name: string; species: string }
 
 export type PlantAction =
@@ -11,6 +17,7 @@ export type PlantAction =
   | { type: 'ADD_PLANT'; payload: Plant }
   | { type: 'DELETE_PLANT'; payload: number }
   | { type: 'UPDATE_PLANT'; payload: Plant[] }
+  | { type: 'FETCH_A_PLANT'; payload: Plant }
 
 export function requestPlants(): PlantAction {
   return { type: 'REQUEST_PLANTS', payload: null }
@@ -33,7 +40,24 @@ export function deleteAPlant(id: number): PlantAction {
   return { type: 'DELETE_PLANT', payload: id }
 }
 
+export function getAPlant(plant: Plant): PlantAction {
+  return { type: 'FETCH_A_PLANT', payload: plant }
+}
+
 //THUNKS//
+
+export function fetchAPlant(id: number): ThunkAction {
+  return (dispatch) => {
+    dispatch(requestPlants())
+    return plantByID(id) //api
+      .then((plant) => {
+        dispatch(getAPlant(plant))
+      })
+      .catch((err) => {
+        dispatch(showErr(err.message))
+      })
+  }
+}
 
 export function deletePlant(id: number): ThunkAction {
   return (dispatch) => {

@@ -27,7 +27,9 @@ function AddPlant() {
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const key = e.target.id
-    const selectedPlant = extplants.find((plant) => plant.common_name === e.target.value)
+    const selectedPlant = extplants.find(
+      (plant) => plant.common_name === e.target.value
+    )
     const extId = selectedPlant ? selectedPlant.id : 0
     const newState = { ...newPlant, [key]: e.target.value, extId: extId }
     setNewPlant(newState)
@@ -46,9 +48,11 @@ function AddPlant() {
   return (
     <>
       <section className="add-plant">
-        <button onClick={handleClick}>{viewForm ? '-' : '+'}</button>
+        <button className="add-button" onClick={handleClick}>
+          {viewForm ? '-' : '+'}
+        </button>
         {viewForm && (
-          <form onSubmit={handleSubmit}>
+          <form className="add-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input
               type="text"

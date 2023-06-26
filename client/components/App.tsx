@@ -1,12 +1,12 @@
-import Plants from './Plants'
 import { Header } from './Header'
+import { Outlet } from 'react-router-dom'
 import { Footer } from './Footer'
 
 function App() {
   return (
     <>
       <Header />
-      <Plants />
+      <Outlet />
       <Footer />
     </>
   )

@@ -7,6 +7,11 @@ router.get('/', async (req, res) => {
   const plants = await db.getAllPlants()
   res.json(plants)
 })
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const plant = await db.getAPlants(id)
+  res.json(plant)
+})
 
 router.post('/', async (req, res) => {
   const data = { ...req.body }
@@ -26,12 +31,6 @@ router.delete('/:id', async (req, res) => {
 //   const data = req.body
 //   const post = await db.updatePost(id, data)
 //   res.json(post)
-// })
-
-// router.get('/:postId/comments', async (req, res) => {
-//   const postId = req.params.postId
-//   const comments = await db.getAllComments(postId)
-//   res.json(comments)
 // })
 
 // router.post('/:postId/comments', async (req, res) => {

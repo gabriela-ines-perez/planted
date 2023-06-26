@@ -13,6 +13,8 @@ function plantReducer(state = initialState, action: PlantAction): Plant[] {
 
     case 'DELETE_PLANT':
       return state.filter((plant) => plant.id !== payload)
+    case 'FETCH_A_PLANT':
+      return payload
 
     default:
       return state

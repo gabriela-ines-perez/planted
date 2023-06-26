@@ -12,7 +12,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   request
     .get(
-      `https://perenual.com/api/species-list?key=${process.env.PLANT_KEY}&indoor=1`
+      `https://perenual.com/api/species-list?key=${process.env.PLANT_KEY}&indoor=0`
     )
     .then((plant) => {
       return res.json(plant.body.data)

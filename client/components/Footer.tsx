@@ -2,7 +2,8 @@ export function Footer() {
   return (
     <>
       <footer>
-        <p>gaby room 2023</p>
+      <img className="logo-small" src="images/logoseed.png" alt="logo" />
+        <p>house plant tracker | 2023</p>
       </footer>
     </>
   )

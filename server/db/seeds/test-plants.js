@@ -11,14 +11,14 @@ exports.seed = async function (knex) {
       name: 'Jerry',
       species: 'monserta',
       image: 'monstera.webp',
-      extID: 426,
+      extID: 5257,
     },
     {
       id: 2,
       name: 'Joy',
       species: 'snake plant',
       image: 'snake-plant.jpeg',
-      extID: 426,
+      extID: 7168,
     },
     {
       id: 3,

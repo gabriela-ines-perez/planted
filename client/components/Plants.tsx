@@ -12,7 +12,9 @@ function Plants() {
     dispatch(fetchPlants()).catch((err) => {
       console.error(err.message)
     })
-  }, [])
+  }, [dispatch])
+
+  console.log(plants)
 
   return (
     <>
@@ -26,7 +28,7 @@ function Plants() {
               id={pl.id}
               species={pl.species}
               image={pl.image}
-              extId={pl.extId}
+              extID={pl.extID}
             />
           ))}
       </section>

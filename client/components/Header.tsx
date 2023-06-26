@@ -1,7 +1,8 @@
 export function Header() {
   return (
     <header>
-      <h1>The Plants in My Room</h1>
+      <img className="logo" src="images/logoseed.png" alt="logo" />
+      <h1>House Plant Tracker</h1>
     </header>
   )
 }

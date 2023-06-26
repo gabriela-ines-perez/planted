@@ -1,4 +1,5 @@
 export interface ExtPlantData {
+  common_name: string
   id: number
   species: string
   scientific_name: string
